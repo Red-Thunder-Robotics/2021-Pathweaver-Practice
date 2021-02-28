@@ -58,10 +58,10 @@ public final class Constants {
         //docs.wpilib.org "Step 2: Entering the Calculated Constants"
 
         //Change based on characterization
-        public static final double ksVolts = 0.14;
-        public static final double kvVoltSecondsPerMeter = 0.0861;
-        public static final double kaVoltSecondsSquaredPerMeter = 0.00849;
-        public static final double kPDriveVel = 0.379;
+        public static final double ksVolts = 0.171;
+        public static final double kvVoltSecondsPerMeter = 3.24;
+        public static final double kaVoltSecondsSquaredPerMeter = 0.427;
+        public static final double kPDriveVel = 2.13;
 
         public static final double kMaxSpeedMetersPerSecond = 3;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
