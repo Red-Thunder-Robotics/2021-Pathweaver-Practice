@@ -21,8 +21,6 @@ import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.trajectory.constraint.DifferentialDriveVoltageConstraint;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
-import edu.wpi.first.wpilibj2.command.button.Button;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.DriveSubsystem;
 
 /**
@@ -38,21 +36,6 @@ public class RobotContainer {
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   DriveSubsystem m_driveSubsystem = new DriveSubsystem();
 
-  // Create the controllers
-  GenericHID driverController = new XboxController(Constants.DRIVE_CONTROLLER);
-
-  // Driver xBox Buttons
-
-  Button A_Button = new JoystickButton(driverController, 1);
-  Button B_Button = new JoystickButton(driverController, 2);
-  Button X_Button = new JoystickButton(driverController, 3);
-  Button Y_Button = new JoystickButton(driverController, 4);
-  Button LB_Button = new JoystickButton(driverController, 5);
-  Button RB_Button = new JoystickButton(driverController, 6);
-  Button Select_Button = new JoystickButton(driverController, 7);
-  Button Start_Button = new JoystickButton(driverController, 8);
-  Button Left_Stick_Button = new JoystickButton(driverController, 9);
-  Button Right_Stick_Button = new JoystickButton(driverController, 10);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.

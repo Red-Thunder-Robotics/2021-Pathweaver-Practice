@@ -23,31 +23,7 @@ public final class Constants {
         public static final int BACK_LEFT_MOTOR_CAN = 1;
         public static final int BACK_RIGHT_MOTOR_CAN = 3;
     
-        // Controller ID's and axes
-    
-        public static final int DRIVE_CONTROLLER = 0; // Driver Controller ID
-        public static final int DRIVE_LEFT_X_AXIS = 0;
-        public static final int DRIVE_LEFT_Y_AXIS = 1;
-        public static final int DRIVE_LEFT_TRIGGER = 2;
-        public static final int DRIVE_RIGHT_TRIGGER = 3;
-        public static final int DRIVE_RIGHT_X_AXIS = 4;
-        public static final int DRIVE_RIGHT_Y_AXIS = 5;
-    
-        public static final int OPERATOR_CONTROLLER = 1; // Operator Controller ID
-        public static final int OPERATOR_LEFT_X_AXIS = 0;
-        public static final int OPERATOR_LEFT_Y_AXIS = 1;
-        public static final int OPERATOR_LEFT_TRIGGER = 2;
-        public static final int OPERATOR_RIGHT_TRIGGER = 3;
-        public static final int OPERATOR_RIGHT_X_AXIS = 4;
-        public static final int OPERATOR_RIGHT_Y_AXIS = 5;
-    
-        public static final int TESTING_CONTROLLER = 5;  // Testing Controller ID
-        public static final int TEST_LEFT_X_AXIS = 0;
-        public static final int TEST_LEFT_Y_AXIS = 1;
-        public static final int TEST_LEFT_TRIGGER = 2;
-        public static final int TEST_RIGHT_TRIGGER = 3;
-        public static final int TEST_RIGHT_X_AXIS = 4;
-        public static final int TEST_RIGHT_Y_AXIS = 5;
+
 
         //Encoder constants
 
