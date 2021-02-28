@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -52,7 +54,26 @@ public final class Constants {
         public static final double ENCODER_LOW_METERS = 0.03724;
         public static final double ENCODER_LOW_METERS_PER_SECOND = 0.00062067;
 
+        //Characterization constants
+        //docs.wpilib.org "Step 2: Entering the Calculated Constants"
+
+        //Change based on characterization
+        public static final double ksVolts = 0.14;
+        public static final double kvVoltSecondsPerMeter = 0.0861;
+        public static final double kaVoltSecondsSquaredPerMeter = 0.00849;
+        public static final double kPDriveVel = 0.379;
+
+        public static final double kMaxSpeedMetersPerSecond = 3;
+        public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+
+        public static final double kRamseteB = 2;
+        public static final double kRamseteZeta = 0.7;
+
+        public static final double kTrackwidthMeters = 0.61;
+        public static final DifferentialDriveKinematics kDriveKinematics = new DifferentialDriveKinematics(kTrackwidthMeters);
         
+
+
 
         
 }

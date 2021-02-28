@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
-import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -30,7 +29,11 @@ public class DriveSubsystem extends SubsystemBase {
     m_rightEncoder.setPositionConversionFactor(Constants.ENCODER_LOW_METERS);
     
     m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
+
+    resetEncoders();
   }
+
+
 
   public CANSparkMax frontLeft = new CANSparkMax(Constants.FRONT_LEFT_MOTOR_CAN, MotorType.kBrushless);
   public CANSparkMax frontRight = new CANSparkMax(Constants.FRONT_RIGHT_MOTOR_CAN, MotorType.kBrushless);
@@ -52,29 +55,22 @@ public class DriveSubsystem extends SubsystemBase {
 
   //Feeforward/Feedback Gains
 
-  public static final double ksVolts = 0.14;
-  public static final double kvVoltSecondsPerMeter = 0.0861;
-  public static final double kaVoltSecondsSquaredPerMeter = 0.00849;
-  public static final double kPDriveVel = 0.379;
+    //Moved to Constants.java
 
   //DifferentialDriveKinematics
 
-  public static final double kTrackWidthMeters = 0.61;
-  public static final DifferentialDriveKinematics kDriveKinematics =
-    new DifferentialDriveKinematics(kTrackWidthMeters);
+    //Moved to Constants.java
 
   //Max Trajectory Velocity/Acceleration
   //Max velocity set shomewhat below nominal free-speed of the robot
   //Due to the later use of `DifferentialDriveVoltageConstraint` the max acceleration value is not crucial
 
-  public static final double kMaxSpeedMetersPerSecond = 3;
-  public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+      //Moved to Constants.java
 
   //Ramesete Parameters
   //Parameters for Ramsete contorller.  Values are what are used for most robots
 
-  public static final double kRamseteB = 2;
-  public static final double kRamseteZeta = 0.7;
+    //Moved to Constants.java
 
   //Create encoder from Spark MAX
 
@@ -87,7 +83,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   //Odometry
 
-  private final DifferentialDriveOdometry m_odometry;
+  private final DifferentialDriveOdometry m_odometry; //Used to find position relative to starting location
 
   //Encoder conversion from rotations to meters
   //Encoder Accessor Method
@@ -98,6 +94,10 @@ public class DriveSubsystem extends SubsystemBase {
     return new DifferentialDriveWheelSpeeds(m_leftEncoder.getVelocity(), m_rightEncoder.getVelocity());
   }
 
+  public void resetOdometry(Pose2d pose){
+    resetEncoders();
+    m_odometry.resetPosition(pose, m_gyro.getRotation2d());
+  }
 
   public double getHeading(){
     return m_gyro.getRotation2d().getDegrees();
@@ -105,13 +105,19 @@ public class DriveSubsystem extends SubsystemBase {
 
 
   public Pose2d getPose(){
-    return m_odometry.getPoseMeters();
+    return m_odometry.getPoseMeters();  //Returns the position of the robot on the field, meters
   }
 
+  //Control the differential drive with voltage
   public void tankDriveVolts(double leftVolts, double rightvolts){
     leftGroup.setVoltage(leftVolts);
     rightGroup.setVoltage(rightvolts);
     differentialRocketLeagueDrive.feed();
+  }
+
+  public void resetEncoders(){
+    m_leftEncoder.setPosition(0);
+    m_rightEncoder.setPosition(0);
   }
 
   
